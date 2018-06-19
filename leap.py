@@ -1,0 +1,155 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jun 18 06:02:00 2018
+
+@author: Shivanshu
+"""
+# imports are here
+import datetime
+
+# Functions are define here
+def file_input(x,y):
+    with open("file_001_#name.txt","a")as f1:
+        f1.write(x+" created on "+y+"\n")
+        f1.close
+# ---------------------------------------------------        
+
+print("Welcome\nLeap 1.0.0v\nAn approch to create a Object Oriented Data by using python")
+print("and testing that file on MongoDB database.\n")
+now = datetime.datetime.now()
+date_now=str(now)
+
+
+while True:
+    print("Press 1 For JSON File\n")
+    print("Press 2 For OOD in JSON File")
+    user_input = str(input("-->>> "))
+    # Choose your file format
+    if user_input=="1":
+        while True:
+            print("Press 1 For New File\n")
+            print("Press 2 For Open File\n")
+            print("Type --help for help\n")
+            
+            user_input2 = str(input("-->>> "))
+            
+            if user_input2=="1":
+                user_input_filename = str(input("New File Name: "))
+                #Function call for take records of file
+                name_001 = file_input(user_input_filename,date_now)
+                
+                with open(user_input_filename+".json","w")as f:
+                    dist = str(input("Collection/Table Name: "))
+                    d=dist
+                    key = str(input("Topic Name: "))
+                    value = str(input("Value: "))
+                    dist={key:value}
+                    # Code for JSON file is here
+                    
+                    
+                    while True:
+                        user_input_option = str(input("Continue Writting: Y/n"))
+                        
+                        if user_input_option=="Y":
+                            key = str(input("Topic Name: "))
+                            value = str(input("Value: "))
+                            dist[key] = value
+                            print(str(dist))
+                            
+                        
+                        elif user_input_option=="n":
+                            f.write("db."+d+".insert("+str(dist)+")\n")
+                            f.close()
+                            break
+                        
+                        
+            elif user_input2=="quit()":
+                break
+            # Code for Opening the file
+            elif user_input2=="2":
+                user_input_filename2 = str(input("File Name: "))
+                print("Do you want to Write or Read W/r") # Choose either read or write
+                user_input_option2 = str(input("W/r "))
+
+                if user_input_option2=="W":
+                    with open(user_input_filename2+".json","a")as f:
+                            dist = str(input("Collection/Table Name: "))
+                            d=dist
+                            key = str(input("Topic Name: "))
+                            value = str(input("Value: "))
+                            dist={key:value}
+                            
+
+                            while True:
+                                # Check weather to continue or not
+                                user_input_option3 = str(input("Continue Writting: Y/n"))
+                                if user_input_option3=="Y":
+                                    key = str(input("Topic Name: "))
+                                    value = str(input("Value: "))
+                                    dist[key] = value
+                                    print(str(dist))
+
+                                elif user_input_option3=="n":
+                                    f.write("db."+d+".insert("+str(dist)+")\n")
+                                    f.close()
+                                    break
+                            
+                        
+                                
+
+                            
+                        
+                elif user_input_option2=="r":
+                    with open(user_input_filename2+".json","r")as f:
+                        print(f.read())
+                        f.close()
+                 
+
+    elif user_input=="quit()":
+        break
+    # Object Oriented Database by JSON File
+    elif user_input=="2":
+        while True:
+            print("Press 1 For New File\n")
+            print("Press 2 For Open File\n")
+            print("Type --help for help\n")
+            
+            user_input2 = str(input("-->>> "))
+            
+            if user_input2=="1":
+                user_input_file_name = str(input("File Name: "))
+                
+                with open(user_input_file_name+".json","w")as f:
+                    dist = str(input("Collection/Table Name: "))
+                    d=dist
+                    key = str(input("Topic Name: "))
+                    value = str(input("Value: "))
+                    dist={key:value}
+                    
+                    # Code for OOD is here
+                    while True:
+                        user_input_option = str(input("Continue Writting: Y/n"))
+                        
+                        if user_input_option=="Y":
+                            key = str(input("Topic Name: "))
+                            value = str(input("Value: "))
+                            dist[key] = value
+                            print(str(dist))
+                            
+                        
+                        elif user_input_option=="n":
+                            f.write("db."+d+".insert("+str(dist)+")")
+                            break
+                    
+                
+                
+            
+            
+        
+                            
+                        
+                    
+                    
+                    
+                    
+                    
